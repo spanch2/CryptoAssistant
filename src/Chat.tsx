@@ -15,11 +15,23 @@ export const Chat = () => {
         new Message({ id: 0, message: "I'm you -- the blue bubble!" }), // Blue bubble
       ];
     const[messages, setMessages] = useState<Message[]>(messagesarray);
+
+    const updateMessages = (newMessage: string) => {     
+        setMessages(messages => [...messages, 
+            new Message({
+                id: 0,
+                message: newMessage
+            })
+        ])
+        console.log(messages)
+    }
+
     return (
         <Box marginLeft="5" marginRight="5" marginTop="3">
             <NavBar></NavBar>
+            <Box style={{height:"vh - 50px"}}>
             <ChatFeed
-            messages={messagesarray}
+            messages={messages}
             hasInputField={false}
             showSenderName
             bubblesCentered={false}
@@ -38,7 +50,8 @@ export const Chat = () => {
                     background: "#83c5be",
                 }
             }}></ChatFeed>
-            <InputField></InputField>
+            </Box>
+            <InputField submit={updateMessages}></InputField>
         </Box>
     )
 }
