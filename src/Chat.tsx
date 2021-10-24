@@ -4,7 +4,7 @@ import { ChatFeed, Message } from 'react-chat-ui';
 import { useState } from 'react';
 import { NavBar } from './NavBar';
 import { Box } from '@chakra-ui/layout';
-import { background } from '@chakra-ui/styled-system';
+import parseInput from './backend/parseInput'
 
 export const Chat = () => {
     const messagesarray = [
@@ -23,13 +23,14 @@ export const Chat = () => {
                 message: newMessage
             })
         ])
+        console.log(parseInput(newMessage))
         console.log(messages)
     }
 
     return (
         <Box marginLeft="5" marginRight="5" marginTop="3">
             <NavBar></NavBar>
-            <Box style={{height:"vh - 50px"}}>
+            <Box style={{paddingBottom:"50px", paddingTop:"55px"}}>
             <ChatFeed
             messages={messages}
             hasInputField={false}

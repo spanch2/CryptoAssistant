@@ -3,8 +3,8 @@ import { Container, Navbar } from "react-bootstrap";
 
 export const NavBar = () => {
     return (
-        <Box>
-            <Heading as="h2" size="xl" >
+        <Box className="fixed-top" bg="white">
+            <Heading as="h2" size="xl" marginLeft="5" marginTop="3" marginBottom="5">
             CryptoAssistant
             </Heading>
       </Box>

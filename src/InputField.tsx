@@ -14,8 +14,7 @@ export const InputField = (props: InputFieldProps) => {
         setMessage('')
     }
     return (
-        <Box className="fixed-bottom" marginBottom="5" marginLeft="5" marginRight="5" style={{height:"30px"}}>
-        <Center>
+        <Center className="fixed-bottom"  bg="white" marginLeft="5" marginRight="5" style={{height:"60px"}}>
             <form onSubmit={handleSubmit} style={{width:"100%"}}>
             <InputGroup size="md">
                 <Input 
@@ -32,6 +31,5 @@ export const InputField = (props: InputFieldProps) => {
             </form>
             
         </Center>
-        </Box>
     )
 }
