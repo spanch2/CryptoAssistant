@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
-cryptoList = []
-cryptos = []
+let cryptoList = []
+let cryptos = []
 const url = "https://crypto-bot-8b64.azurewebsites.net/qnamaker/knowledgebases/19319ae4-8504-48f3-a9fd-f3f220ec6dba/generateAnswer"
 const requestOptions = {
     method: 'GET',
@@ -18,7 +18,7 @@ const requestOptions = {
   };
   
 const getCryptoList = async () => {
-  const response = await axios.get("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest" ,requestOptions).catch((err) => {
+  const response = await axios.get("https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest" ,requestOptions).catch((err) => {
     console.log('API call error:', err.message);
   });
     // console.log('API call response:', response.data.data);

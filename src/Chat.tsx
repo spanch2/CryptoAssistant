@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { InputField } from './InputField';
 import { ChatFeed, Message } from 'react-chat-ui';
 import { useState } from 'react';
@@ -10,20 +10,38 @@ export const Chat = () => {
     const messagesarray = [
         new Message({
           id: 1,
-          message: "I'm the recipient! (The person you're talking to)",
-        }), // Gray bubble
-        new Message({ id: 0, message: "I'm you -- the blue bubble!" }), // Blue bubble
+          message: "Ask me about current cryptocurrency prices!",
+        })
       ];
     const[messages, setMessages] = useState<Message[]>(messagesarray);
 
+    const messagesEndRef = useRef<null | HTMLElement>(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+      }, [messages]);
+      
     const updateMessages = (newMessage: string) => {     
-        setMessages(messages => [...messages, 
-            new Message({
-                id: 0,
-                message: newMessage
-            })
-        ])
-        console.log(parseInput(newMessage))
+        if (newMessage.replace(/\s/g, '').length){
+            setMessages(messages => [...messages, 
+                new Message({
+                    id: 0,
+                    message: newMessage
+                })
+            ])
+        }
+        parseInput(newMessage).then((data) => {
+            setMessages(messages => [...messages, 
+                new Message({
+                    id: 1,
+                    message: data
+                })
+            ])
+        })
         console.log(messages)
     }
 
@@ -51,6 +69,7 @@ export const Chat = () => {
                     background: "#83c5be",
                 }
             }}></ChatFeed>
+            <div ref={messagesEndRef as React.RefObject<HTMLDivElement>} />
             </Box>
             <InputField submit={updateMessages}></InputField>
         </Box>
