@@ -3,10 +3,9 @@ import { InputGroup, Button } from "@chakra-ui/react"
 
 export const InputField = () => {
     return (
-        <Box style={{position: "absolute",
-            bottom: "0"}}>
+        <Box className="fixed-bottom" marginBottom="5" marginLeft="5" marginRight="5">
         <Center>
-            <InputGroup size="md" width="97.5%">
+            <InputGroup size="md">
                 <Input 
                 pr="4.5rem" 
                 />
