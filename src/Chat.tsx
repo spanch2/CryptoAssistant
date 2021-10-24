@@ -1,7 +1,8 @@
 import React from 'react';
+import { InputField } from './InputField';
 
 export const Chat = () => {
     return (
-        <p>chat</p>
+        <InputField></InputField>
     )
 }
